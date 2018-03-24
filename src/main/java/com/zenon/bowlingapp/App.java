@@ -30,9 +30,18 @@ public class App {
                 System.out.println(pair.getKey() + " = " + pair.getValue());
 
                 String bowlerName = pair.getKey().toString();
-                ArrayList<Integer> scores = (ArrayList<Integer>) pair.getValue();
+                ArrayList<Integer> rolls = (ArrayList<Integer>) pair.getValue();
 
-                Game aGame = new Game(bowlerName, scores);
+                Game aGame = new Game(bowlerName, rolls);
+
+                String listString = "";
+
+                for (int s : aGame.getBowlerRolls()){
+                    listString += Integer.toString(s) + " ";
+                }
+
+
+                System.out.println(aGame.getBowler() + " " + listString);
 //                it.remove(); // avoids a ConcurrentModificationException
             }
 

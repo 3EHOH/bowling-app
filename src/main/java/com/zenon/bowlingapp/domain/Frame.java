@@ -12,4 +12,5 @@ public class Frame {
         this.totalScore = score;
     }
 
+
 }

@@ -78,13 +78,6 @@ public class FileParser {
 
             buf.close();
 
-            for (Object name: playerProfs.keySet()){
-
-                String key = name.toString();
-                String value = playerProfs.get(name).toString();
-                System.out.println(key + " " + value);
-
-            }
 
             return playerProfs;
 

@@ -7,12 +7,20 @@ import java.util.Map;
 
 public class Game {
 
-    String bowler;
-    ArrayList<Integer> allRolls;
+    private String bowler;
+    private ArrayList<Integer> allRolls;
 
     public Game(String playerName, ArrayList<Integer> playerRolls) {
 
         this.bowler  = playerName;
         this.allRolls = playerRolls;
+    }
+
+    public String getBowler() {
+        return bowler;
+    }
+
+    public ArrayList<Integer> getBowlerRolls() {
+        return allRolls;
     }
 }
