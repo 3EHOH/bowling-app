@@ -1,19 +1,12 @@
 package com.zenon.bowlingapp;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
+import com.zenon.bowlingapp.domain.Game;
 import com.zenon.bowlingapp.util.io.FileParser;
-import org.apache.commons.io.FileUtils;
-import java.io.BufferedReader;
-import java.util.*;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 
 public class App {
@@ -21,11 +14,31 @@ public class App {
     public static void main( String[] args ) {
 
         FileParser fp = new FileParser();
+
+        HashMap<String, ArrayList<Integer>> allPlayersAndScores;
+
         try {
-            fp.readScore();
+            allPlayersAndScores = fp.readScore();
+
+//            Map.Entry<String, ArrayList<Integer>> entry = allPlayersAndScores.entrySet().iterator().next();
+
+            for (Object o : allPlayersAndScores.entrySet()) {
+                Map.Entry pair = (Map.Entry) o;
+                System.out.println(pair.getKey() + " = " + pair.getValue());
+
+                String bowlerName = pair.getKey().toString();
+                ArrayList<Integer> scores = (ArrayList<Integer>) pair.getValue();
+
+                Game aGame = new Game(bowlerName, scores);
+//                it.remove(); // avoids a ConcurrentModificationException
+            }
+
         } catch (Exception e) {
+
             e.printStackTrace();
         }
+
+
 
     }
 

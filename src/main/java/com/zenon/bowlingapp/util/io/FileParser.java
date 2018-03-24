@@ -15,7 +15,7 @@ import static com.zenon.bowlingapp.util.Constants.FOUL_INT;
 public class FileParser {
 
 
-    public void readScore() throws IOException {
+    public  HashMap<String,ArrayList<Integer>> readScore() throws IOException {
 
 //        if(args.length > 0) {
 //            File file = new File(args[0]);
@@ -60,28 +60,6 @@ public class FileParser {
                     String playerName = playerAndScoreArray[0];
                     int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
 
-//                    if ( Integer.valueOf(playerAndScoreArray[1]) == FOUL_CHAR_ENCODING ) {
-//                        playerScore = FOUL_INT;
-//                    } else {
-//                        playerScore = Integer.valueOf(playerAndScoreArray[1]);
-//                    }
-
-//                    playerProf.add
-//                    for(String each : playersArray){
-//                        if(!"".equals(playerAndScoreArray[0])){
-//                            uniquePlayers.add(playerAndScoreArray[0]);
-//                        }
-
-
-
-//                    PlayerProfile aPlayer = new PlayerProfile(playerAndScoreArray[0]);
-
-//                    if (playerProfs.containsKey(aPlayer) ) {
-//                        ArrayList<Integer> playerScores = playerProfs.get(aPlayer);
-//                        playerScores.add(playerScore);
-//                        playerProfs.put()
-//                    } else {
-
                     if (playerProfs.containsKey(playerName) ) {
                         ArrayList<Integer> playerScores = playerProfs.get(playerName);
 
@@ -94,38 +72,9 @@ public class FileParser {
                         playerProfs.put(playerName, scores);
                     }
 
-
-
-//                    if (playerProfiles.contains(aPlayer.playerName))
-//                    addToList(playerAndScoreArray[0], playerAndScoreArray[1]);
-
-//                    playerProfiles.add(aPlayer);
-
-
-//                        JSONObject obj = new JSONObject();
-//
-//
-//                        obj.put("playerName", uniquePlayers);
-////                        obj.put("playerScore", new ArrayList<Integer>);
-//                        JSONArray playerScore = new JSONArray();
-//
-//                        Gson gson = new GsonBuilder().create();
-//                        List<Integer> myList = new ArrayList<>();
-
-
-
-
-
-//                        JsonArray myCustomArray = gson.toJsonTree(myCustomList).getAsJsonArray();
-
-//                    }
                 }
             }
 
-
-//            for(String each : uniquePlayers){
-//                System.out.println(each);
-//            }
 
             buf.close();
 
@@ -137,13 +86,12 @@ public class FileParser {
 
             }
 
+            return playerProfs;
 
-
-        System.out.println( "Hello World!" );
     }
 
 
-    public static int ConvertIntoNumeric(String xVal)
+    private static int ConvertIntoNumeric(String xVal)
     {
 
         if (xVal.charAt(0) == FOUL_CHAR) {
@@ -151,7 +99,6 @@ public class FileParser {
         } else {
             return Integer.parseInt(xVal);
         }
-//        }
     }
 
 }
