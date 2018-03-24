@@ -14,6 +14,12 @@ public class Frame {
         this.totalScore = score;
     }
 
+    //Constructor for Spare superclass
+    public Frame(Roll roll0, Roll roll1) {
+        this.firstRoll = roll0;
+        this.secondRoll = roll1;
+    }
+
 
     //Constructor for Strike superclass
     Frame(Roll roll0, int score) {
@@ -24,6 +30,14 @@ public class Frame {
     //Constructor for Strike superclass
     public Frame(Roll roll0) {
         this.firstRoll = roll0;
+    }
+
+    public boolean isSpare() {
+        return false;
+    }
+
+    public boolean isStrike() {
+        return false;
     }
 
 

@@ -11,5 +11,9 @@ public class Strike extends Frame {
     public Strike(Roll roll0, int score) {
         super(roll0, score);
     }
-    
+
+    public boolean isStrike() {
+        return true;
+    }
+
 }
