@@ -4,9 +4,12 @@ package com.zenon.bowlingapp;
 import com.zenon.bowlingapp.domain.Game;
 import com.zenon.bowlingapp.util.io.FileParser;
 
-import java.awt.*;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Collections;
 
 
 public class App {
@@ -44,8 +47,8 @@ public class App {
 
     static class PlayerProfile {
 
-        public String playerName;
-        public List<Integer> playerScores;
+        String playerName;
+        List<Integer> playerScores;
 
         public PlayerProfile(String name) {
             this.playerName = name;
