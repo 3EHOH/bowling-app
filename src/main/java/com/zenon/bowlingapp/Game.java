@@ -1,6 +1,4 @@
-package com.zenon.bowlingapp.domain;
-
-import com.zenon.bowlingapp.domain.Frame.Frame;
+package com.zenon.bowlingapp;
 
 import java.util.ArrayList;
 
@@ -20,7 +18,7 @@ public class Game {
         return bowler;
     }
 
-    public ArrayList<Frame> getBowlerRolls() {
+    public ArrayList<Frame> getAllFrames() {
         return allFrames;
     }
 }

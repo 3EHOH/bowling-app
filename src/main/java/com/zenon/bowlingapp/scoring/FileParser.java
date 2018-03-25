@@ -1,20 +1,18 @@
-package com.zenon.bowlingapp.util.io;
+package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.domain.Roll;
+import com.zenon.bowlingapp.Roll;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
-import static com.zenon.bowlingapp.util.Constants.FOUL_CHAR;
-import static com.zenon.bowlingapp.util.Constants.FOUL_INT;
 
 public class FileParser {
+
+    public static final int FOUL_INT = -1;
+    public static final char FOUL_CHAR = 'F';
 
 
     public  HashMap<String,ArrayList<Roll>> readScore() throws IOException {

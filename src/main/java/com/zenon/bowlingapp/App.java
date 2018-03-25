@@ -1,9 +1,8 @@
 package com.zenon.bowlingapp;
 
 
-import com.zenon.bowlingapp.domain.Game;
-import com.zenon.bowlingapp.domain.Roll;
-import com.zenon.bowlingapp.util.io.FileParser;
+import com.zenon.bowlingapp.scoring.FileParser;
+import com.zenon.bowlingapp.scoring.FrameScoreParser;
 
 
 import java.util.ArrayList;
@@ -19,29 +18,33 @@ public class App {
 
         FileParser fp = new FileParser();
 
-        HashMap<String, ArrayList<Roll>> allPlayersAndScores;
+        HashMap<String, ArrayList<Roll>> allPlayersAndRolls;
 
         try {
-            allPlayersAndScores = fp.readScore();
+            allPlayersAndRolls = fp.readScore();
 
 //            Map.Entry<String, ArrayList<Integer>> entry = allPlayersAndScores.entrySet().iterator().next();
 
-            for (Object o : allPlayersAndScores.entrySet()) {
+            for (Object o : allPlayersAndRolls.entrySet()) {
                 Map.Entry pair = (Map.Entry) o;
                 System.out.println(pair.getKey() + " = " + pair.getValue());
 
                 String bowlerName = pair.getKey().toString();
-                ArrayList<Roll> rolls = (ArrayList<Roll>) pair.getValue();
+                ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
 
-                Game aGame = new Game(bowlerName, rolls);
+                Game aGame = FrameScoreParser.parseFramesFromRolls(bowlerName, bowlerRolls);
+
+//                Game aGame = new Game(bowlerName, frames);
 
                 String listString = "";
-
-                for (Roll s : aGame.getBowlerRolls()){
-                    listString += Integer.toString(s.getRollPoints()) + " ";
+//
+                for (Frame f : aGame.getAllFrames()){
+                    listString += Integer.toString(f.getFirstRoll().getRollPoints()) + " ";
                 }
-
-
+//
+//
+//
+//
                 System.out.println(aGame.getBowler() + " " + listString);
 //                it.remove(); // avoids a ConcurrentModificationException
             }
