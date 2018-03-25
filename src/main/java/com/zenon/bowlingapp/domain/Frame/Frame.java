@@ -4,9 +4,9 @@ import com.zenon.bowlingapp.domain.Roll;
 
 public class Frame {
 
-    Roll firstRoll;
-    Roll secondRoll;
-    int totalScore;
+    private Roll firstRoll;
+    private Roll secondRoll;
+    private int totalScore;
 
     public Frame(Roll roll0, Roll roll1, int score) {
         this.firstRoll = roll0;
@@ -20,7 +20,6 @@ public class Frame {
         this.secondRoll = roll1;
     }
 
-
     //Constructor for Strike superclass
     Frame(Roll roll0, int score) {
         this.firstRoll = roll0;
@@ -32,6 +31,19 @@ public class Frame {
         this.firstRoll = roll0;
     }
 
+    public Roll getFirstRoll(){
+        return firstRoll;
+    }
+
+    public Roll getSecondRoll() {
+        return secondRoll;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    //default response, toggled in superclasses
     public boolean isSpare() {
         return false;
     }

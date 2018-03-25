@@ -2,10 +2,13 @@ package com.zenon.bowlingapp.domain;
 
 public class Roll {
 
-    private int score;
+    int rollPoints;
 
-    public Roll(int score) {
-        this.score = score;
+    public Roll(int rollPoints) {
+        this.rollPoints = rollPoints;
     }
 
+    public int getRollPoints() {
+        return rollPoints;
+    }
 }
