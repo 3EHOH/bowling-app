@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Game {
 
     private String bowler;
-    private ArrayList<Integer> allRolls;
+    private ArrayList<Roll> allRolls;
 
-    public Game(String playerName, ArrayList<Integer> playerRolls) {
+    public Game(String playerName, ArrayList<Roll> playerRolls) {
 
         this.bowler  = playerName;
         this.allRolls = playerRolls;
@@ -18,7 +18,7 @@ public class Game {
         return bowler;
     }
 
-    public ArrayList<Integer> getBowlerRolls() {
+    public ArrayList<Roll> getBowlerRolls() {
         return allRolls;
     }
 }
