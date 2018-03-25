@@ -2,6 +2,7 @@ package com.zenon.bowlingapp;
 
 
 import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.Roll;
 import com.zenon.bowlingapp.util.io.FileParser;
 
 
@@ -18,7 +19,7 @@ public class App {
 
         FileParser fp = new FileParser();
 
-        HashMap<String, ArrayList<Integer>> allPlayersAndScores;
+        HashMap<String, ArrayList<Roll>> allPlayersAndScores;
 
         try {
             allPlayersAndScores = fp.readScore();
@@ -30,14 +31,14 @@ public class App {
                 System.out.println(pair.getKey() + " = " + pair.getValue());
 
                 String bowlerName = pair.getKey().toString();
-                ArrayList<Integer> rolls = (ArrayList<Integer>) pair.getValue();
+                ArrayList<Roll> rolls = (ArrayList<Roll>) pair.getValue();
 
                 Game aGame = new Game(bowlerName, rolls);
 
                 String listString = "";
 
-                for (int s : aGame.getBowlerRolls()){
-                    listString += Integer.toString(s) + " ";
+                for (Roll s : aGame.getBowlerRolls()){
+                    listString += Integer.toString(s.getRollPoints()) + " ";
                 }
 
 

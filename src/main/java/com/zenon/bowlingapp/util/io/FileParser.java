@@ -1,5 +1,7 @@
 package com.zenon.bowlingapp.util.io;
 
+import com.zenon.bowlingapp.domain.Roll;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,7 +17,7 @@ import static com.zenon.bowlingapp.util.Constants.FOUL_INT;
 public class FileParser {
 
 
-    public  HashMap<String,ArrayList<Integer>> readScore() throws IOException {
+    public  HashMap<String,ArrayList<Roll>> readScore() throws IOException {
 
         BufferedReader buf = null;
 
@@ -28,7 +30,7 @@ public class FileParser {
             String lineJustFetched;
             String[] playerAndScoreArray;
 
-            HashMap<String,ArrayList<Integer>> playerProfs = new HashMap<>();
+            HashMap<String,ArrayList<Roll>> playerProfs = new HashMap<>();
 
             while(true){
                 lineJustFetched = buf.readLine();
@@ -41,16 +43,17 @@ public class FileParser {
                     playerAndScoreArray = lineJustFetched.split(" ");
                     String playerName = playerAndScoreArray[0];
                     int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
+                    Roll aRoll = new Roll(playerScore);
 
                     if (playerProfs.containsKey(playerName) ) {
-                        ArrayList<Integer> playerScores = playerProfs.get(playerName);
+                        ArrayList<Roll> playerScores = playerProfs.get(playerName);
 
-                        playerScores.add(playerScore);
+                        playerScores.add(aRoll);
                         playerProfs.put(playerName, playerScores);
                     } else {
-                        ArrayList<Integer> scores = new ArrayList<>();
+                        ArrayList<Roll> scores = new ArrayList<>();
 
-                        scores.add(playerScore);
+                        scores.add(aRoll);
                         playerProfs.put(playerName, scores);
                     }
 
