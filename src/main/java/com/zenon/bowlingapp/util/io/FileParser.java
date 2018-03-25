@@ -17,20 +17,6 @@ public class FileParser {
 
     public  HashMap<String,ArrayList<Integer>> readScore() throws IOException {
 
-//        if(args.length > 0) {
-//            File file = new File(args[0]);
-//
-//
-//
-//            String str;
-//            str = FileUtils.readFileToString(file,  "UTF-8");
-//
-//            System.out.println(str);
-//
-//            // Work with your 'file' object here
-//        }
-
-
         BufferedReader buf = null;
 
         try {
@@ -39,12 +25,8 @@ public class FileParser {
             e.printStackTrace();
         }
 
-    //            ArrayList<String> words = new ArrayList<>();
-            Set<String> uniquePlayers = new HashSet<>();
             String lineJustFetched;
             String[] playerAndScoreArray;
-
-//            List<PlayerProfile> playerProfiles = Collections.emptyList();
 
             HashMap<String,ArrayList<Integer>> playerProfs = new HashMap<>();
 
