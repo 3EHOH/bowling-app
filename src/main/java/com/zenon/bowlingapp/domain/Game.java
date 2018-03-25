@@ -1,24 +1,26 @@
 package com.zenon.bowlingapp.domain;
 
+import com.zenon.bowlingapp.domain.Frame.Frame;
+
 import java.util.ArrayList;
 
 
 public class Game {
 
     private String bowler;
-    private ArrayList<Roll> allRolls;
+    private ArrayList<Frame> allFrames;
 
-    public Game(String playerName, ArrayList<Roll> playerRolls) {
+    public Game(String playerName, ArrayList<Frame> frames) {
 
         this.bowler  = playerName;
-        this.allRolls = playerRolls;
+        this.allFrames = frames;
     }
 
     public String getBowler() {
         return bowler;
     }
 
-    public ArrayList<Roll> getBowlerRolls() {
-        return allRolls;
+    public ArrayList<Frame> getBowlerRolls() {
+        return allFrames;
     }
 }

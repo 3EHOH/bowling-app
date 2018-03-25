@@ -2,6 +2,7 @@ package com.zenon.bowlingapp.scoring;
 
 import com.zenon.bowlingapp.domain.Frame.Frame;
 import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.Roll;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class PointsCalculator {
     public void calculateTotalScore(Game aGame) {
         int rollCount = 0;
 
-        for (Integer roll : aGame.getBowlerRolls()) {
+        for (Roll roll : aGame.getBowlerRolls()) {
 
             rollCount++;
 
