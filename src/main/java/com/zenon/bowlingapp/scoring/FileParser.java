@@ -11,11 +11,13 @@ import java.util.HashMap;
 
 public class FileParser {
 
+
+    //TODO MOVE THIS AND THE CONVERSION LOGIC INTO ITS OWN ROLL PARSER CLASS
     public static final int FOUL_INT = -1;
     public static final char FOUL_CHAR = 'F';
 
-
-    public  HashMap<String,ArrayList<Roll>> readScore() throws IOException {
+    //TODO RENAME TO createGameProfile or something
+    public HashMap<String, ArrayList<Roll>> readScore() throws IOException {
 
         BufferedReader buf = null;
 
@@ -25,50 +27,44 @@ public class FileParser {
             e.printStackTrace();
         }
 
-            String lineJustFetched;
-            String[] playerAndScoreArray;
+        String lineJustFetched;
+        String[] playerAndScoreArray;
 
-            HashMap<String,ArrayList<Roll>> playerProfs = new HashMap<>();
+        HashMap<String, ArrayList<Roll>> playerProfs = new HashMap<>();
 
-            while(true){
-                lineJustFetched = buf.readLine();
+        while (true) {
+            lineJustFetched = buf.readLine();
 
-                if (lineJustFetched == null) {
+            if (lineJustFetched == null) {
+                break;
+            } else {
+                playerAndScoreArray = lineJustFetched.split(" ");
+                String playerName = playerAndScoreArray[0];
+                int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
+                Roll aRoll = new Roll(playerScore);
 
-                    break;
+                if (playerProfs.containsKey(playerName)) {
+                    ArrayList<Roll> playerScores = playerProfs.get(playerName);
 
+                    playerScores.add(aRoll);
+                    playerProfs.put(playerName, playerScores);
                 } else {
-                    playerAndScoreArray = lineJustFetched.split(" ");
-                    String playerName = playerAndScoreArray[0];
-                    int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
-                    Roll aRoll = new Roll(playerScore);
+                    ArrayList<Roll> scores = new ArrayList<>();
 
-                    if (playerProfs.containsKey(playerName) ) {
-                        ArrayList<Roll> playerScores = playerProfs.get(playerName);
-
-                        playerScores.add(aRoll);
-                        playerProfs.put(playerName, playerScores);
-                    } else {
-                        ArrayList<Roll> scores = new ArrayList<>();
-
-                        scores.add(aRoll);
-                        playerProfs.put(playerName, scores);
-                    }
-
+                    scores.add(aRoll);
+                    playerProfs.put(playerName, scores);
                 }
+
             }
+        }
 
+        buf.close();
 
-            buf.close();
-
-
-            return playerProfs;
-
+        return playerProfs;
     }
 
 
-    private static int ConvertIntoNumeric(String xVal)
-    {
+    private static int ConvertIntoNumeric(String xVal) {
 
         if (xVal.charAt(0) == FOUL_CHAR) {
             return FOUL_INT;
