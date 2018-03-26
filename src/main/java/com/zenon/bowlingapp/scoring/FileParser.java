@@ -13,8 +13,8 @@ public class FileParser {
 
 
     //TODO MOVE THIS AND THE CONVERSION LOGIC INTO ITS OWN ROLL PARSER CLASS
-    public static final int FOUL_INT = -1;
-    public static final char FOUL_CHAR = 'F';
+    private static final int FOUL_INT = -1;
+    private static final char FOUL_CHAR = 'F';
 
     //TODO RENAME TO createGameProfile or something
     public HashMap<String, ArrayList<Roll>> readScore() throws IOException {
