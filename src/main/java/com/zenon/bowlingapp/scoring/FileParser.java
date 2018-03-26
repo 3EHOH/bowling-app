@@ -17,12 +17,12 @@ public class FileParser {
     private static final char FOUL_CHAR = 'F';
 
     //TODO RENAME TO createGameProfile or something
-    public HashMap<String, ArrayList<Roll>> readScore() throws IOException {
+    public HashMap<String, ArrayList<Roll>> parseGameFile() throws IOException {
 
         BufferedReader buf = null;
 
         try {
-            buf = new BufferedReader(new FileReader("src/main/java/com/zenon/bowlingapp/game.txt"));
+            buf = new BufferedReader(new FileReader("src/main/java/com/zenon/bowlingapp/game_all_faults.txt"));
         } catch (Exception e) {
             e.printStackTrace();
         }

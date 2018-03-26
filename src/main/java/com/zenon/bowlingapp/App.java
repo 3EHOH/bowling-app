@@ -5,8 +5,6 @@ import com.zenon.bowlingapp.scoring.FileParser;
 import com.zenon.bowlingapp.scoring.FrameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,83 +18,28 @@ public class App {
 
         FileParser fp = new FileParser();
 
-        HashMap<String, ArrayList<Roll>> allPlayersAndRolls;
+        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
 
         try {
-            allPlayersAndRolls = fp.readScore();
-
-//            Map.Entry<String, ArrayList<Integer>> entry = allPlayersAndScores.entrySet().iterator().next();
-
-            ArrayList<Game> allGames = new ArrayList<>();
-
-            for (Object o : allPlayersAndRolls.entrySet()) {
-                Map.Entry pair = (Map.Entry) o;
-//                System.out.println(pair.getKey() + " = " + pair.getValue());
-
-                String bowlerName = pair.getKey().toString();
-                ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
-
-                Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
-
-                Game calculatedGame = GameCalculator.calculateGame(aGame);
-
-                allGames.add(calculatedGame);
-
-//                Game aGame = new Game(bowlerName, frames);
-
-                String listString = "";
-//
-                for (Frame f : calculatedGame.getAllFrames()){
-                    listString += Integer.toString(f.getTotalScore()) + " ";
-                }
-//
-//
-//
-//
-//                System.out.println(aGame.getBowler() + " " + listString);
-//                it.remove(); // avoids a ConcurrentModificationException
-
-//                GamePrinter.printFrameNumbers();
-            }
-
-            GamePrinter.printAllGames(allGames);
-
+            allPlayersAndRolls = fp.parseGameFile();
         } catch (Exception e) {
-
             e.printStackTrace();
         }
 
+        ArrayList<Game> allGames = new ArrayList<>();
 
+        for (Object o : allPlayersAndRolls.entrySet()) {
+            Map.Entry pair = (Map.Entry) o;
+            String bowlerName = pair.getKey().toString();
+            ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
+            Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
+            Game calculatedGame = GameCalculator.calculateGame(aGame);
 
-    }
-
-    static class PlayerProfile {
-
-        String playerName;
-        List<Integer> playerScores;
-
-        public PlayerProfile(String name) {
-            this.playerName = name;
-            this.playerScores = Collections.emptyList();
+            allGames.add(calculatedGame);
         }
 
+        GamePrinter.printAllGames(allGames);
 
     }
 
-
-//    HashMap<String, ArrayList<Integer>> playerProf = new HashMap<String, ArrayList<Integer>>();
-//
-//    public synchronized void addToList(String mapKey, Integer myItem) {
-//        ArrayList<Integer> itemsList = playerProf.get(mapKey);
-//
-//        // if list does not exist create it
-//        if(itemsList == null) {
-//            itemsList = new ArrayList<Integer>();
-//            itemsList.add(myItem);
-//            playerProf.put(mapKey, itemsList);
-//        } else {
-//            // add if item is not already in list
-//            if(!itemsList.contains(myItem)) itemsList.add(myItem);
-//        }
-//    }
 }
