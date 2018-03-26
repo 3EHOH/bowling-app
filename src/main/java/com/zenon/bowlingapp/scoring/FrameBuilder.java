@@ -4,20 +4,20 @@ import com.zenon.bowlingapp.*;
 
 import java.util.ArrayList;
 
-public class FrameScoreParser {
+public class FrameBuilder {
 
     private static final int TEN_POINTS = 10;
 
     //TODO split this into one function for frames and another for game
-    public static Game parseFramesFromRolls(String player, final ArrayList<Roll> rolls) {
+    public static Game parseFramesFromRolls(String player, ArrayList<Roll> rolls) {
         ArrayList<Frame> frames = new ArrayList<>();
         int rollCounter = 0;
 
         while (rollCounter < rolls.size()) {
             Frame frame = parseFrameFromRoll(rollCounter, rolls);
 
-            System.out.println("A FRAME " + frame.getTotalScore());
-            System.out.println("A FRAME " + frame.getFirstRoll().getRollPoints());
+//            System.out.println("A FRAME " + frame.getTotalScore());
+//            System.out.println("A FRAME " + frame.getFirstRoll().getRollPoints());
 
             frames.add(frame);
 
@@ -29,9 +29,9 @@ public class FrameScoreParser {
         }
 
 
-        for (Frame frame: frames) {
-            System.out.println("SCORE PER FRAME " + Integer.toString(frame.getTotalScore()));
-        }
+//        for (Frame frame: frames) {
+//            System.out.println("SCORE PER FRAME " + Integer.toString(frame.getTotalScore()));
+//        }
 
         return new Game(player, frames);
     }
@@ -55,7 +55,7 @@ public class FrameScoreParser {
     private static Roll parseRoll(int rollIndex, ArrayList<Roll> rolls) {
 
         if (rollIndex < rolls.size()) {
-            System.out.println("CURRENT ROLL " + Integer.toString(rolls.get(rollIndex).getRollPoints()));
+//            System.out.println("CURRENT ROLL " + Integer.toString(rolls.get(rollIndex).getRollPoints()));
             return rolls.get(rollIndex);
         } else return new Roll(0);
     }

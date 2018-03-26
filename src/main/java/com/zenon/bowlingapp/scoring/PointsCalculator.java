@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class PointsCalculator {
 
 
-    public static int frameTotalScore(final Frame frame, final ArrayList<Frame> frames) {
+    public static int frameTotalScore(Frame frame, ArrayList<Frame> frames) {
         return frameScore(frame) + isStrikeOrSpareBonus(frame, frames);
     }
 
@@ -19,7 +19,7 @@ public class PointsCalculator {
         }
     }
 
-    private static int isStrikeOrSpareBonus(final Frame frame, final ArrayList<Frame> frames) {
+    private static int isStrikeOrSpareBonus(Frame frame, ArrayList<Frame> frames) {
         if (frame.isStrike()) {
             return calculateStrikeTotalPoints(frame, frames);
         }

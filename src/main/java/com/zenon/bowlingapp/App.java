@@ -2,7 +2,8 @@ package com.zenon.bowlingapp;
 
 
 import com.zenon.bowlingapp.scoring.FileParser;
-import com.zenon.bowlingapp.scoring.FrameScoreParser;
+import com.zenon.bowlingapp.scoring.FrameBuilder;
+import com.zenon.bowlingapp.scoring.GameCalculator;
 
 
 import java.util.ArrayList;
@@ -32,14 +33,16 @@ public class App {
                 String bowlerName = pair.getKey().toString();
                 ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
 
-                Game aGame = FrameScoreParser.parseFramesFromRolls(bowlerName, bowlerRolls);
+                Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
+
+                Game calculatedGame = GameCalculator.calculateGame(aGame);
 
 //                Game aGame = new Game(bowlerName, frames);
 
                 String listString = "";
 //
-                for (Frame f : aGame.getAllFrames()){
-                    listString += Integer.toString(f.getFirstRoll().getRollPoints()) + " ";
+                for (Frame f : calculatedGame.getAllFrames()){
+                    listString += Integer.toString(f.getTotalScore()) + " ";
                 }
 //
 //
