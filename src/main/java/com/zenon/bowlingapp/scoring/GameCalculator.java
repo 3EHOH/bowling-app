@@ -32,6 +32,12 @@ public class GameCalculator {
             totalFrames.add(calculatedFrame);
         }
 
+        if (allFrames.size() > 10) {
+            Frame bonusFrame = allFrames.get((allFrames.size() - 1));
+
+            totalFrames.add(bonusFrame);
+        }
+
         return new Game(aGame.getBowler(), totalFrames);
     }
 

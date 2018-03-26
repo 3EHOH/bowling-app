@@ -6,6 +6,7 @@ import com.zenon.bowlingapp.scoring.FrameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +27,11 @@ public class App {
 
 //            Map.Entry<String, ArrayList<Integer>> entry = allPlayersAndScores.entrySet().iterator().next();
 
+            ArrayList<Game> allGames = new ArrayList<>();
+
             for (Object o : allPlayersAndRolls.entrySet()) {
                 Map.Entry pair = (Map.Entry) o;
-                System.out.println(pair.getKey() + " = " + pair.getValue());
+//                System.out.println(pair.getKey() + " = " + pair.getValue());
 
                 String bowlerName = pair.getKey().toString();
                 ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
@@ -36,6 +39,8 @@ public class App {
                 Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
 
                 Game calculatedGame = GameCalculator.calculateGame(aGame);
+
+                allGames.add(calculatedGame);
 
 //                Game aGame = new Game(bowlerName, frames);
 
@@ -48,9 +53,13 @@ public class App {
 //
 //
 //
-                System.out.println(aGame.getBowler() + " " + listString);
+//                System.out.println(aGame.getBowler() + " " + listString);
 //                it.remove(); // avoids a ConcurrentModificationException
+
+//                GamePrinter.printFrameNumbers();
             }
+
+            GamePrinter.printAllGames(allGames);
 
         } catch (Exception e) {
 
