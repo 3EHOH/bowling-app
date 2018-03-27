@@ -5,6 +5,7 @@ import com.zenon.bowlingapp.scoring.FileParser;
 import com.zenon.bowlingapp.scoring.FrameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,13 +16,13 @@ import java.util.Collections;
 public class App {
 
     public static void main( String[] args ) {
-
+        File bowlingGameFile = new File(args[0]);
         FileParser fp = new FileParser();
 
         HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
 
         try {
-            allPlayersAndRolls = fp.parseGameFile();
+            allPlayersAndRolls = fp.parseGameFile(bowlingGameFile);
         } catch (Exception e) {
             e.printStackTrace();
         }

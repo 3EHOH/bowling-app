@@ -2,8 +2,8 @@ package com.zenon.bowlingapp;
 
 public class Roll {
 
-    int rollPoints;
-    boolean isFault;
+    private int rollPoints;
+    private boolean isFault;
 
     public Roll(int rollPoints) {
         if (rollPoints == -1) {

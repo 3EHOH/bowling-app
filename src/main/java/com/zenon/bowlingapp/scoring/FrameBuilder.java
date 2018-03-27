@@ -16,9 +16,6 @@ public class FrameBuilder {
         while (rollCounter < rolls.size()) {
             Frame frame = parseFrameFromRoll(rollCounter, rolls);
 
-//            System.out.println("A FRAME " + frame.getTotalScore());
-//            System.out.println("A FRAME " + frame.getFirstRoll().getRollPoints());
-
             frames.add(frame);
 
             if(frame.isStrike()){
@@ -28,34 +25,28 @@ public class FrameBuilder {
             }
         }
 
-
-//        for (Frame frame: frames) {
-//            System.out.println("SCORE PER FRAME " + Integer.toString(frame.getTotalScore()));
-//        }
-
         return new Game(player, frames);
     }
 
     private static Frame parseFrameFromRoll(int aRoll, ArrayList<Roll> rolls) {
-        Roll firstOne = parseRoll(aRoll, rolls);
+        Roll firstRoll = parseRoll(aRoll, rolls);
 
-        if (firstOne.getRollPoints() == TEN_POINTS) {
-            return new Strike(firstOne);
+        if (firstRoll.getRollPoints() == TEN_POINTS) {
+            return new Strike(firstRoll);
         }
 
-        Roll secondOne = parseRoll(aRoll + 1, rolls);
+        Roll secondRoll = parseRoll(aRoll + 1, rolls);
 
-        if (firstOne.getRollPoints() + secondOne.getRollPoints() == TEN_POINTS) {
-            return new Spare(firstOne, secondOne);
+        if (firstRoll.getRollPoints() + secondRoll.getRollPoints() == TEN_POINTS) {
+            return new Spare(firstRoll, secondRoll);
         }
 
-        return new Frame(firstOne, secondOne);
+        return new Frame(firstRoll, secondRoll);
     }
 
     private static Roll parseRoll(int rollIndex, ArrayList<Roll> rolls) {
 
         if (rollIndex < rolls.size()) {
-//            System.out.println("CURRENT ROLL " + Integer.toString(rolls.get(rollIndex).getRollPoints()));
             return rolls.get(rollIndex);
         } else return new Roll(0);
     }

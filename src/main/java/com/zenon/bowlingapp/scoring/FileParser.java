@@ -3,6 +3,7 @@ package com.zenon.bowlingapp.scoring;
 import com.zenon.bowlingapp.Roll;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,12 +18,12 @@ public class FileParser {
     private static final char FOUL_CHAR = 'F';
 
     //TODO RENAME TO createGameProfile or something
-    public HashMap<String, ArrayList<Roll>> parseGameFile() throws IOException {
+    public HashMap<String, ArrayList<Roll>> parseGameFile(File file) throws IOException {
 
         BufferedReader buf = null;
 
         try {
-            buf = new BufferedReader(new FileReader("src/main/java/com/zenon/bowlingapp/game_all_faults.txt"));
+            buf = new BufferedReader(new FileReader(file));
         } catch (Exception e) {
             e.printStackTrace();
         }
