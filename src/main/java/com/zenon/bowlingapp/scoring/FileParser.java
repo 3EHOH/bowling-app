@@ -18,7 +18,7 @@ public class FileParser {
     private static final char FOUL_CHAR = 'F';
 
     //TODO RENAME TO createGameProfile or something
-    public HashMap<String, ArrayList<Roll>> parseGameFile(File file) throws IOException {
+    public HashMap<String, ArrayList<Roll>> parseGameFile(File file) throws Exception {
 
         BufferedReader buf = null;
 
@@ -31,48 +31,73 @@ public class FileParser {
         String lineJustFetched;
         String[] playerAndScoreArray;
 
-        HashMap<String, ArrayList<Roll>> playerProfs = new HashMap<>();
+        HashMap<String, ArrayList<Roll>> gameProfiles = new HashMap<>();
 
         while (true) {
             lineJustFetched = buf.readLine();
 
             if (lineJustFetched == null) {
                 break;
+            } else if (!isValidInput(lineJustFetched)) {
+                throw new Exception("Invalid file input");
             } else {
                 playerAndScoreArray = lineJustFetched.split(" ");
                 String playerName = playerAndScoreArray[0];
                 int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
                 Roll aRoll = new Roll(playerScore);
 
-                if (playerProfs.containsKey(playerName)) {
-                    ArrayList<Roll> playerScores = playerProfs.get(playerName);
+                if (gameProfiles.containsKey(playerName)) {
+                    ArrayList<Roll> playerScores = gameProfiles.get(playerName);
 
                     playerScores.add(aRoll);
-                    playerProfs.put(playerName, playerScores);
+                    gameProfiles.put(playerName, playerScores);
                 } else {
                     ArrayList<Roll> scores = new ArrayList<>();
 
                     scores.add(aRoll);
-                    playerProfs.put(playerName, scores);
+                    gameProfiles.put(playerName, scores);
                 }
-
             }
         }
-
         buf.close();
 
-        return playerProfs;
+        return gameProfiles;
     }
 
 
-    private static int ConvertIntoNumeric(String xVal) {
+    private static int ConvertIntoNumeric(String bowlingRoll) {
 
-        if (xVal.charAt(0) == FOUL_CHAR) {
+        if (bowlingRoll.charAt(0) == FOUL_CHAR) {
             return FOUL_INT;
         } else {
-            return Integer.parseInt(xVal);
+            return Integer.parseInt(bowlingRoll);
         }
     }
+
+    private static boolean isValidInput(String fileLine) {
+        return fileLine.split(" ").length == 2;
+    }
+
+//    private static HashMap<String, ArrayList<Roll>> buildgameProfiles(String fileLine, HashMap<String, ArrayList<Roll>> gameProfiles) {
+//        String[] playerAndScoreArray = fileLine.split(" ");
+//        String playerName = playerAndScoreArray[0];
+//        int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
+//        Roll aRoll = new Roll(playerScore);
+//
+//        if (gameProfiles.containsKey(playerName)) {
+//            ArrayList<Roll> playerScores = gameProfiles.get(playerName);
+//
+//            playerScores.add(aRoll);
+//            gameProfiles.put(playerName, playerScores);
+//        } else {
+//            ArrayList<Roll> scores = new ArrayList<>();
+//
+//            scores.add(aRoll);
+//            gameProfiles.put(playerName, scores);
+//        }
+//
+//        return gameProfiles;
+//    }
 
 }
 

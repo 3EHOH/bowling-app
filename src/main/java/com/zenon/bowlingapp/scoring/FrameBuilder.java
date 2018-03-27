@@ -25,11 +25,19 @@ public class FrameBuilder {
             }
         }
 
+//        for(Frame f: frames){
+//            System.out.println("first roll " + f.getFirstRoll().getRollPoints());
+//            if(f.getSecondRoll())
+//            System.out.println("first roll " + f.getFirstRoll().getRollPoints())
+//        }
+
         return new Game(player, frames);
     }
 
     private static Frame parseFrameFromRoll(int aRoll, ArrayList<Roll> rolls) {
         Roll firstRoll = parseRoll(aRoll, rolls);
+
+//        System.out.println("FRAME first roll: " + firstRoll.getRollPoints());
 
         if (firstRoll.getRollPoints() == TEN_POINTS) {
             return new Strike(firstRoll);
@@ -40,6 +48,8 @@ public class FrameBuilder {
         if (firstRoll.getRollPoints() + secondRoll.getRollPoints() == TEN_POINTS) {
             return new Spare(firstRoll, secondRoll);
         }
+
+//        System.out.println("FRAME second roll: " + secondRoll.getRollPoints());
 
         return new Frame(firstRoll, secondRoll);
     }

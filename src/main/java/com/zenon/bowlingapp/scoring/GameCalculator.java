@@ -18,9 +18,7 @@ public class GameCalculator {
 
         for (int i = 0; i < ALL_REGULATION_FRAMES; i++) {
             Frame currentFrame = allFrames.get(i);
-
             points += PointsCalculator.frameTotalScore(currentFrame, aGame.getAllFrames());
-
             Frame calculatedFrame = FramePointsCalculator.calculateTotalPoints(currentFrame, points);
 
             totalFrames.add(calculatedFrame);
@@ -28,17 +26,31 @@ public class GameCalculator {
 
         int bonusFrameCounter = 0;
 
-        //handle the bonus - could fold this into if check in previous loop
-        if (allFrames.size() > ALL_REGULATION_FRAMES) {
-            while(totalFrames.size() < allFrames.size()){
-                Frame bonusFrame = allFrames.get((ALL_REGULATION_FRAMES - 1) + bonusFrameCounter);
+        //handle the bonus - todo fold this into if check in previous loop
+
+        if (allFrames.size() > totalFrames.size()){
+            while((totalFrames.size() + bonusFrameCounter) < allFrames.size() ) {
+                Frame bonusFrame = allFrames.get(totalFrames.size() + bonusFrameCounter);
 
                 totalFrames.add(bonusFrame);
                 bonusFrameCounter++;
             }
         }
 
-
+//        if (allFrames.size() >= ALL_REGULATION_FRAMES) {
+//            while(totalFrames.size() < allFrames.size() ){ //&& bonusFrameCounter < MAX_BONUS_FRAMES
+//                Frame bonusFrame = allFrames.get((ALL_REGULATION_FRAMES - 1) + bonusFrameCounter);
+//
+//                System.out.println("BONUS FRAME 1 " + bonusFrame.getFirstRoll().getRollPoints());
+//                if(bonusFrame.getSecondRoll() != null){
+//                    System.out.println("BONUS FRAME 2 " + bonusFrame.getSecondRoll().getRollPoints());
+//                }
+//
+//
+//                totalFrames.add(bonusFrame);
+//                bonusFrameCounter++;
+//            }
+//        }
 
         return new Game(aGame.getBowler(), totalFrames);
     }
