@@ -1,5 +1,9 @@
 package com.zenon.bowlingapp;
 
+import com.zenon.bowlingapp.domain.Frame;
+import com.zenon.bowlingapp.domain.Roll;
+import com.zenon.bowlingapp.domain.Spare;
+import com.zenon.bowlingapp.domain.Strike;
 import com.zenon.bowlingapp.scoring.PointsCalculator;
 import junit.framework.TestCase;
 

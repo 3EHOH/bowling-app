@@ -1,14 +1,14 @@
 package com.zenon.bowlingapp;
 
+import com.zenon.bowlingapp.domain.Frame;
+import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.Roll;
 import com.zenon.bowlingapp.scoring.FileParser;
-import com.zenon.bowlingapp.scoring.GameBuilder;
-import com.zenon.bowlingapp.scoring.GameCalculator;
 import junit.framework.TestCase;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class GameCalculatorTest extends TestCase {
