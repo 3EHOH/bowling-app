@@ -1,4 +1,4 @@
-package com.zenon.bowlingapp.scoring;
+package com.zenon.bowlingapp.domain.io;
 
 import com.zenon.bowlingapp.domain.Roll;
 

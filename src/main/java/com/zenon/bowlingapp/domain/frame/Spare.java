@@ -1,6 +1,5 @@
-package com.zenon.bowlingapp.domain;
+package com.zenon.bowlingapp.domain.frame;
 
-import com.zenon.bowlingapp.domain.Frame;
 import com.zenon.bowlingapp.domain.Roll;
 
 public class Spare extends Frame {

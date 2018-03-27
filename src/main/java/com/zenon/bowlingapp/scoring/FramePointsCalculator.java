@@ -1,8 +1,8 @@
 package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.domain.Frame;
-import com.zenon.bowlingapp.domain.Spare;
-import com.zenon.bowlingapp.domain.Strike;
+import com.zenon.bowlingapp.domain.frame.Frame;
+import com.zenon.bowlingapp.domain.frame.Spare;
+import com.zenon.bowlingapp.domain.frame.Strike;
 
 public class FramePointsCalculator {
 

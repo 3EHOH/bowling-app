@@ -1,8 +1,9 @@
 package com.zenon.bowlingapp;
 
-import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.game.Game;
 import com.zenon.bowlingapp.domain.Roll;
-import com.zenon.bowlingapp.scoring.FileParser;
+import com.zenon.bowlingapp.domain.game.GamesBuilder;
+import com.zenon.bowlingapp.domain.io.FileParser;
 
 import java.io.File;
 import java.util.ArrayList;
