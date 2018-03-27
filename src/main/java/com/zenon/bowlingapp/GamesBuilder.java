@@ -1,5 +1,7 @@
 package com.zenon.bowlingapp;
 
+import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.Roll;
 import com.zenon.bowlingapp.scoring.GameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 

@@ -1,11 +1,10 @@
 package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.Roll;
+import com.zenon.bowlingapp.domain.Roll;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 

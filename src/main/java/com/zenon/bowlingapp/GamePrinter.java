@@ -1,5 +1,8 @@
 package com.zenon.bowlingapp;
 
+import com.zenon.bowlingapp.domain.Frame;
+import com.zenon.bowlingapp.domain.Game;
+
 import java.util.ArrayList;
 
 public class GamePrinter {
@@ -100,8 +103,8 @@ public class GamePrinter {
 
 
     private static StringBuilder printScore(ArrayList<Frame> frames) {
-
         StringBuilder printedScore = new StringBuilder();
+
         printedScore.append("\nScore\t\t");
 
         for (int i = 0; i < ALL_REGULATION_FRAMES; i++) {
@@ -112,7 +115,6 @@ public class GamePrinter {
     }
 
     private static StringBuilder printFrameNumbers() {
-
         StringBuilder printedFrameNumbers = new StringBuilder();
 
         printedFrameNumbers.append("Frame\t\t");
@@ -123,6 +125,4 @@ public class GamePrinter {
 
         return printedFrameNumbers.append("\n");
     }
-
-
 }

@@ -1,7 +1,7 @@
 package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.Frame;
-import com.zenon.bowlingapp.Game;
+import com.zenon.bowlingapp.domain.Frame;
+import com.zenon.bowlingapp.domain.Game;
 
 import java.util.ArrayList;
 

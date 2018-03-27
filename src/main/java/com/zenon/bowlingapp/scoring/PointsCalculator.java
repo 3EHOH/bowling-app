@@ -1,6 +1,6 @@
 package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.Frame;
+import com.zenon.bowlingapp.domain.Frame;
 import java.util.ArrayList;
 
 public class PointsCalculator {

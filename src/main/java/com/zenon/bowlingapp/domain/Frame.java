@@ -1,4 +1,4 @@
-package com.zenon.bowlingapp;
+package com.zenon.bowlingapp.domain;
 
 public class Frame {
 

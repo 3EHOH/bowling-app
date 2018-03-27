@@ -1,6 +1,6 @@
 package com.zenon.bowlingapp.scoring;
 
-import com.zenon.bowlingapp.*;
+import com.zenon.bowlingapp.domain.*;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,6 @@ public class GameBuilder {
 
     private static final int TEN_POINTS = 10;
 
-    //TODO split this into one function for frames and another for game
     public static Game parseGameFromRolls(String player, ArrayList<Roll> rolls) {
         ArrayList<Frame> frames = new ArrayList<>();
         int rollCounter = 0;
