@@ -1,19 +1,6 @@
 package com.zenon.bowlingapp;
 
-import com.zenon.bowlingapp.scoring.FileParser;
-import com.zenon.bowlingapp.scoring.FrameBuilder;
-import com.zenon.bowlingapp.scoring.GameCalculator;
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import org.apache.commons.io.IOUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Unit test for simple App.
@@ -76,7 +63,7 @@ public class AppTest extends TestCase {
 //            Map.Entry pair = (Map.Entry) o;
 //            String bowlerName = pair.getKey().toString();
 //            ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
-//            Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
+//            Game aGame = GameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
 //            Game calculatedGame = GameCalculator.calculateGame(aGame);
 //
 //            allGames.add(calculatedGame);

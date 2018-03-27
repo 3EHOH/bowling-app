@@ -1,6 +1,8 @@
 package com.zenon.bowlingapp;
 
 import com.zenon.bowlingapp.scoring.FileParser;
+import org.apache.commons.lang.StringEscapeUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,5 +24,6 @@ public class App {
         ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
         StringBuilder printedAllGames = GamePrinter.printAllGames(allGames);
         System.out.print(printedAllGames);
+//        System.out.printf(StringEscapeUtils.escapeJava(printedAllGames.toString()));
     }
 }

@@ -1,7 +1,7 @@
 package com.zenon.bowlingapp;
 
 import com.zenon.bowlingapp.scoring.FileParser;
-import com.zenon.bowlingapp.scoring.FrameBuilder;
+import com.zenon.bowlingapp.scoring.GameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 import junit.framework.TestCase;
 
@@ -13,13 +13,11 @@ import java.util.Map;
 
 public class GameCalculatorTest extends TestCase {
 
-    public void testCalculatedGame() {
+    public void testRegularGameCalculations() {
 
 
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("game.txt").getFile());
-        System.out.println("ABSOLUTE PATH " + file.getAbsolutePath());
-
 
         FileParser fp = new FileParser();
 
@@ -31,17 +29,8 @@ public class GameCalculatorTest extends TestCase {
             e.printStackTrace();
         }
 
-        ArrayList<Game> allGames = new ArrayList<>();
+        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
 
-        for (Object o : allPlayersAndRolls.entrySet()) {
-            Map.Entry pair = (Map.Entry) o;
-            String bowlerName = pair.getKey().toString();
-            ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
-            Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
-            Game calculatedGame = GameCalculator.calculateGame(aGame);
-
-            allGames.add(calculatedGame);
-        }
 
         ArrayList<Frame> framesJeff = allGames.get(0).getAllFrames();
 
@@ -112,7 +101,84 @@ public class GameCalculatorTest extends TestCase {
         assertTrue(framesJohn.get(7).isSpare());
         assertFalse(framesJohn.get(8).isStrike() || framesJohn.get(8).isSpare());
         assertTrue(framesJohn.get(9).isStrike());
+    }
 
+    public void testAllStrikesGameCalculations() {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("game_all_strikes.txt").getFile());
+
+        FileParser fp = new FileParser();
+
+        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
+
+        try {
+            allPlayersAndRolls = fp.parseGameFile(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
+
+
+        ArrayList<Frame> frames = allGames.get(0).getAllFrames();
+
+        assertTrue(frames.get(0).getTotalScore() == 30);
+        assertTrue(frames.get(1).getTotalScore() == 60);
+        assertTrue(frames.get(2).getTotalScore() == 90);
+        assertTrue(frames.get(3).getTotalScore() == 120);
+        assertTrue(frames.get(4).getTotalScore() == 150);
+        assertTrue(frames.get(5).getTotalScore() == 180);
+        assertTrue(frames.get(6).getTotalScore() == 210);
+        assertTrue(frames.get(7).getTotalScore() == 240);
+        assertTrue(frames.get(8).getTotalScore() == 270);
+        assertTrue(frames.get(9).getTotalScore() == 300);
+
+        for(int i = 0; i < 10; i++){
+            assertTrue(frames.get(i).isStrike());
+            assertFalse(frames.get(i).isSpare());
+            assertFalse(frames.get(i).getFirstRoll().isFault());
+        }
+
+    }
+
+    public void testAllFaultsGameCalculations() {
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("game_all_faults.txt").getFile());
+
+        FileParser fp = new FileParser();
+
+        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
+
+        try {
+            allPlayersAndRolls = fp.parseGameFile(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
+
+
+        ArrayList<Frame> frames = allGames.get(0).getAllFrames();
+
+        assertTrue(frames.get(0).getTotalScore() == 0);
+        assertTrue(frames.get(1).getTotalScore() == 0);
+        assertTrue(frames.get(2).getTotalScore() == 0);
+        assertTrue(frames.get(3).getTotalScore() == 0);
+        assertTrue(frames.get(4).getTotalScore() == 0);
+        assertTrue(frames.get(5).getTotalScore() == 0);
+        assertTrue(frames.get(6).getTotalScore() == 0);
+        assertTrue(frames.get(7).getTotalScore() == 0);
+        assertTrue(frames.get(8).getTotalScore() == 0);
+        assertTrue(frames.get(9).getTotalScore() == 0);
+
+        for(int i = 0; i < 10; i++){
+            assertFalse(frames.get(i).isStrike());
+            assertFalse(frames.get(i).isSpare());
+            assertTrue(frames.get(i).getFirstRoll().isFault());
+            assertTrue(frames.get(i).getSecondRoll().isFault());
+        }
 
     }
 

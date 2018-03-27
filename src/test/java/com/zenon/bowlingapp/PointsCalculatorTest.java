@@ -43,10 +43,7 @@ public class PointsCalculatorTest extends TestCase {
         assertTrue(PointsCalculator.frameTotalScore(frame0, frames) == 9);
         //check spare
         assertTrue(PointsCalculator.frameTotalScore(frame1, frames) == 15);
-        //check regular frame
-        assertTrue(PointsCalculator.frameTotalScore(frame2, frames) == 5);
         //check strike
         assertTrue(PointsCalculator.frameTotalScore(frame3, frames) == 14);
-
     }
 }
