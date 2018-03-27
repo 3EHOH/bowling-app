@@ -25,47 +25,14 @@ public class GameCalculator {
         }
 
 
-        //handle the bonus - todo fold this into if check in previous loop
+        //handle the bonus - todo fold this into if check in previous loop?
 
         if (allFrames.size() > totalFrames.size()){
-
-            int bonusFrameCounter = 0;
-
-            System.out.println("ALL FRAMES GREATER THAN TOTAL FRAMES");
-
-            while((totalFrames.size() /* + bonusFrameCounter */) < allFrames.size()) {
-                System.out.println("ALL FRAMES STILL GREATER THAN TOTAL FRAMES");
-
+            while(totalFrames.size() < allFrames.size()){
                 Frame bonusFrame = allFrames.get(totalFrames.size());
-
-                System.out.println("BONUS FRAME: " + bonusFrame.getFirstRoll().getRollPoints());
-                System.out.println(" TOTAL FRAMES SIZE: " + totalFrames.size());
-                System.out.println(" ALL FRAMES SIZE: " + allFrames.size());
-                System.out.println("BONUS COUNTER : " + bonusFrameCounter);
-
-
                 totalFrames.add(bonusFrame);
-
-                System.out.println(" TOTAL FRAMES SIZE AFTER ADD: " + totalFrames.size());
-//                bonusFrameCounter++;
             }
         }
-
-        System.out.println(" TOTAL FRAMES SIZE AFTER ALL: " + totalFrames.size());
-//        if (allFrames.size() >= ALL_REGULATION_FRAMES) {
-//            while(totalFrames.size() < allFrames.size() ){ //&& bonusFrameCounter < MAX_BONUS_FRAMES
-//                Frame bonusFrame = allFrames.get((ALL_REGULATION_FRAMES - 1) + bonusFrameCounter);
-//
-//                System.out.println("BONUS FRAME 1 " + bonusFrame.getFirstRoll().getRollPoints());
-//                if(bonusFrame.getSecondRoll() != null){
-//                    System.out.println("BONUS FRAME 2 " + bonusFrame.getSecondRoll().getRollPoints());
-//                }
-//
-//
-//                totalFrames.add(bonusFrame);
-//                bonusFrameCounter++;
-//            }
-//        }
 
         return new Game(aGame.getBowler(), totalFrames);
     }

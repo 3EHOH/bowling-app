@@ -24,6 +24,5 @@ public class App {
         ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
         StringBuilder printedAllGames = GamePrinter.printAllGames(allGames);
         System.out.print(printedAllGames);
-//        System.out.printf(StringEscapeUtils.escapeJava(printedAllGames.toString()));
     }
 }

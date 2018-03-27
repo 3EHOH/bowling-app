@@ -77,27 +77,5 @@ public class FileParser {
     private static boolean isValidInput(String fileLine) {
         return fileLine.split(" ").length == 2;
     }
-
-//    private static HashMap<String, ArrayList<Roll>> buildgameProfiles(String fileLine, HashMap<String, ArrayList<Roll>> gameProfiles) {
-//        String[] playerAndScoreArray = fileLine.split(" ");
-//        String playerName = playerAndScoreArray[0];
-//        int playerScore = ConvertIntoNumeric(playerAndScoreArray[1]);
-//        Roll aRoll = new Roll(playerScore);
-//
-//        if (gameProfiles.containsKey(playerName)) {
-//            ArrayList<Roll> playerScores = gameProfiles.get(playerName);
-//
-//            playerScores.add(aRoll);
-//            gameProfiles.put(playerName, playerScores);
-//        } else {
-//            ArrayList<Roll> scores = new ArrayList<>();
-//
-//            scores.add(aRoll);
-//            gameProfiles.put(playerName, scores);
-//        }
-//
-//        return gameProfiles;
-//    }
-
 }
 
