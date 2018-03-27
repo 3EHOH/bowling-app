@@ -1,11 +1,6 @@
 package com.zenon.bowlingapp;
 
-import com.zenon.bowlingapp.scoring.FileParser;
 import junit.framework.TestCase;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 //NOTE & TODO: COULDN'T GET THE EXPECTED AND ACTUAL OUTPUTS TO MATCH ON THIS TEST

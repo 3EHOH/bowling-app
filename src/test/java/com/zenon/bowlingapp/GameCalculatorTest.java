@@ -1,9 +1,10 @@
 package com.zenon.bowlingapp;
 
-import com.zenon.bowlingapp.domain.Frame;
-import com.zenon.bowlingapp.domain.Game;
+import com.zenon.bowlingapp.domain.frame.Frame;
+import com.zenon.bowlingapp.domain.game.Game;
 import com.zenon.bowlingapp.domain.Roll;
-import com.zenon.bowlingapp.scoring.FileParser;
+import com.zenon.bowlingapp.domain.game.GamesBuilder;
+import com.zenon.bowlingapp.domain.io.FileParser;
 import junit.framework.TestCase;
 
 import java.io.File;

@@ -1,4 +1,7 @@
 package com.zenon.bowlingapp;
 
-public class FramePointsCalculator {
+import junit.framework.TestCase;
+
+public class FramePointsCalculator extends TestCase {
+
 }
