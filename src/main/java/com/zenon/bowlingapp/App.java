@@ -20,6 +20,7 @@ public class App {
         }
 
         ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
-        GamePrinter.printAllGames(allGames);
+        StringBuilder printedAllGames = GamePrinter.printAllGames(allGames);
+        System.out.print(printedAllGames);
     }
 }

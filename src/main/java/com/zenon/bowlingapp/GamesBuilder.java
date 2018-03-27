@@ -1,6 +1,6 @@
 package com.zenon.bowlingapp;
 
-import com.zenon.bowlingapp.scoring.FrameBuilder;
+import com.zenon.bowlingapp.scoring.GameBuilder;
 import com.zenon.bowlingapp.scoring.GameCalculator;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class GamesBuilder {
             Map.Entry pair = (Map.Entry) o;
             String bowlerName = pair.getKey().toString();
             ArrayList<Roll> bowlerRolls = (ArrayList<Roll>) pair.getValue();
-            Game aGame = FrameBuilder.parseFramesFromRolls(bowlerName, bowlerRolls);
+            Game aGame = GameBuilder.parseGameFromRolls(bowlerName, bowlerRolls);
             Game calculatedGame = GameCalculator.calculateGame(aGame);
 
             allGames.add(calculatedGame);

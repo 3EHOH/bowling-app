@@ -4,12 +4,12 @@ import com.zenon.bowlingapp.*;
 
 import java.util.ArrayList;
 
-public class FrameBuilder {
+public class GameBuilder {
 
     private static final int TEN_POINTS = 10;
 
     //TODO split this into one function for frames and another for game
-    public static Game parseFramesFromRolls(String player, ArrayList<Roll> rolls) {
+    public static Game parseGameFromRolls(String player, ArrayList<Roll> rolls) {
         ArrayList<Frame> frames = new ArrayList<>();
         int rollCounter = 0;
 
@@ -25,19 +25,11 @@ public class FrameBuilder {
             }
         }
 
-//        for(Frame f: frames){
-//            System.out.println("first roll " + f.getFirstRoll().getRollPoints());
-//            if(f.getSecondRoll())
-//            System.out.println("first roll " + f.getFirstRoll().getRollPoints())
-//        }
-
         return new Game(player, frames);
     }
 
     private static Frame parseFrameFromRoll(int aRoll, ArrayList<Roll> rolls) {
         Roll firstRoll = parseRoll(aRoll, rolls);
-
-//        System.out.println("FRAME first roll: " + firstRoll.getRollPoints());
 
         if (firstRoll.getRollPoints() == TEN_POINTS) {
             return new Strike(firstRoll);
@@ -48,8 +40,6 @@ public class FrameBuilder {
         if (firstRoll.getRollPoints() + secondRoll.getRollPoints() == TEN_POINTS) {
             return new Spare(firstRoll, secondRoll);
         }
-
-//        System.out.println("FRAME second roll: " + secondRoll.getRollPoints());
 
         return new Frame(firstRoll, secondRoll);
     }
