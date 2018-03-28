@@ -8,8 +8,8 @@ Setup and Run:
 1) Ensure that the Maven build tool is installed.
 2) Clone this repo.
 3) `cd bowling-app`
-3) `mvn package` to test and build the app.
-4) `mvn exec:java -D exec.mainClass=com.zenon.bowlingapp.App -Dexec.args="src/test/resources/game.txt"` to run the default
+4) `mvn package` to test and build the app.
+5) `mvn exec:java -D exec.mainClass=com.zenon.bowlingapp.App -Dexec.args="src/test/resources/game.txt"` to run the default
 game. Additional .txt files exist in the test/resource directory.
 
 ---
