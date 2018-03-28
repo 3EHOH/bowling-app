@@ -1,16 +1,16 @@
 package com.zenon.bowlingapp;
 
 import com.zenon.bowlingapp.domain.frame.Frame;
-import com.zenon.bowlingapp.domain.Roll;
+import com.zenon.bowlingapp.domain.roll.Roll;
 import com.zenon.bowlingapp.domain.frame.Spare;
 import com.zenon.bowlingapp.domain.frame.Strike;
-import com.zenon.bowlingapp.scoring.PointsCalculator;
+import com.zenon.bowlingapp.calculator.FrameCalculator;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
 
-public class PointsCalculatorTest extends TestCase {
+public class FrameCalculatorTest extends TestCase {
 
     public void testPointsCalculated() {
 
@@ -44,10 +44,10 @@ public class PointsCalculatorTest extends TestCase {
         frames.add(frame4);
 
         //check regular frame
-        assertTrue(PointsCalculator.frameTotalScore(frame0, frames) == 9);
+        assertTrue(FrameCalculator.frameTotalScore(frame0, frames) == 9);
         //check spare
-        assertTrue(PointsCalculator.frameTotalScore(frame1, frames) == 15);
+        assertTrue(FrameCalculator.frameTotalScore(frame1, frames) == 15);
         //check strike
-        assertTrue(PointsCalculator.frameTotalScore(frame3, frames) == 14);
+        assertTrue(FrameCalculator.frameTotalScore(frame3, frames) == 14);
     }
 }

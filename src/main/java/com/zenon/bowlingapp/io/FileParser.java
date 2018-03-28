@@ -1,6 +1,6 @@
-package com.zenon.bowlingapp.domain.io;
+package com.zenon.bowlingapp.io;
 
-import com.zenon.bowlingapp.domain.Roll;
+import com.zenon.bowlingapp.domain.roll.Roll;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,14 +11,10 @@ import java.util.HashMap;
 
 public class FileParser {
 
-
-    //TODO MOVE THIS AND THE CONVERSION LOGIC INTO ITS OWN ROLL PARSER CLASS
     private static final int FOUL_INT = -1;
     private static final char FOUL_CHAR = 'F';
 
-    //TODO RENAME TO createGameProfile or something
     public HashMap<String, ArrayList<Roll>> parseGameFile(File file) throws Exception {
-
         BufferedReader buf = null;
 
         try {

@@ -1,9 +1,9 @@
-package com.zenon.bowlingapp.scoring;
+package com.zenon.bowlingapp.calculator;
 
 import com.zenon.bowlingapp.domain.frame.Frame;
 import java.util.ArrayList;
 
-public class PointsCalculator {
+public class FrameCalculator {
 
 
     public static int frameTotalScore(Frame frame, ArrayList<Frame> frames) {

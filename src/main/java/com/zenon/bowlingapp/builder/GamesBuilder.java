@@ -1,8 +1,8 @@
-package com.zenon.bowlingapp.domain.game;
+package com.zenon.bowlingapp.builder;
 
-import com.zenon.bowlingapp.domain.Roll;
-import com.zenon.bowlingapp.scoring.GameBuilder;
-import com.zenon.bowlingapp.scoring.GameCalculator;
+import com.zenon.bowlingapp.domain.game.Game;
+import com.zenon.bowlingapp.domain.roll.Roll;
+import com.zenon.bowlingapp.calculator.GameCalculator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

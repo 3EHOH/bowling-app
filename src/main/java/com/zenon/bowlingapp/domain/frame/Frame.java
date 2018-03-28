@@ -1,6 +1,6 @@
 package com.zenon.bowlingapp.domain.frame;
 
-import com.zenon.bowlingapp.domain.Roll;
+import com.zenon.bowlingapp.domain.roll.Roll;
 
 public class Frame {
 

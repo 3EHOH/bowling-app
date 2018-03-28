@@ -1,10 +1,10 @@
-package com.zenon.bowlingapp.scoring;
+package com.zenon.bowlingapp.builder;
 
-import com.zenon.bowlingapp.domain.*;
 import com.zenon.bowlingapp.domain.frame.Frame;
 import com.zenon.bowlingapp.domain.frame.Spare;
 import com.zenon.bowlingapp.domain.frame.Strike;
 import com.zenon.bowlingapp.domain.game.Game;
+import com.zenon.bowlingapp.domain.roll.Roll;
 
 import java.util.ArrayList;
 

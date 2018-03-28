@@ -2,9 +2,10 @@ package com.zenon.bowlingapp;
 
 import com.zenon.bowlingapp.domain.frame.Frame;
 import com.zenon.bowlingapp.domain.game.Game;
-import com.zenon.bowlingapp.domain.Roll;
-import com.zenon.bowlingapp.domain.game.GamesBuilder;
-import com.zenon.bowlingapp.domain.io.FileParser;
+import com.zenon.bowlingapp.domain.roll.Roll;
+import com.zenon.bowlingapp.builder.GamesBuilder;
+import com.zenon.bowlingapp.io.FileParser;
+import com.zenon.bowlingapp.util.FileParserTestUtil;
 import junit.framework.TestCase;
 
 import java.io.File;
@@ -15,23 +16,8 @@ import java.util.HashMap;
 public class GameCalculatorTest extends TestCase {
 
     public void testRegularGameCalculations() {
-
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("game.txt").getFile());
-
-        FileParser fp = new FileParser();
-
-        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
-
-        try {
-            allPlayersAndRolls = fp.parseGameFile(file);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
-
+        FileParserTestUtil fptu = new FileParserTestUtil();
+        ArrayList<Game> allGames = fptu.parseFileIntoGames("game.txt");
 
         ArrayList<Frame> framesJeff = allGames.get(0).getAllFrames();
 
@@ -105,22 +91,8 @@ public class GameCalculatorTest extends TestCase {
     }
 
     public void testAllStrikesGameCalculations() {
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("game_all_strikes.txt").getFile());
-
-        FileParser fp = new FileParser();
-
-        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
-
-        try {
-            allPlayersAndRolls = fp.parseGameFile(file);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
-
+        FileParserTestUtil fptu = new FileParserTestUtil();
+        ArrayList<Game> allGames = fptu.parseFileIntoGames("game_all_strikes.txt");
 
         ArrayList<Frame> frames = allGames.get(0).getAllFrames();
 
@@ -144,22 +116,8 @@ public class GameCalculatorTest extends TestCase {
     }
 
     public void testAllFaultsGameCalculations() {
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("game_all_faults.txt").getFile());
-
-        FileParser fp = new FileParser();
-
-        HashMap<String, ArrayList<Roll>> allPlayersAndRolls = new HashMap<>();
-
-        try {
-            allPlayersAndRolls = fp.parseGameFile(file);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<Game> allGames = GamesBuilder.buildGame(allPlayersAndRolls);
-
+        FileParserTestUtil fptu = new FileParserTestUtil();
+        ArrayList<Game> allGames = fptu.parseFileIntoGames("game_all_faults.txt");
 
         ArrayList<Frame> frames = allGames.get(0).getAllFrames();
 

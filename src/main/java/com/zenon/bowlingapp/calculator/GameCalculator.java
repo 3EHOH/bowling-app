@@ -1,5 +1,6 @@
-package com.zenon.bowlingapp.scoring;
+package com.zenon.bowlingapp.calculator;
 
+import com.zenon.bowlingapp.builder.FrameBuilder;
 import com.zenon.bowlingapp.domain.frame.Frame;
 import com.zenon.bowlingapp.domain.game.Game;
 
@@ -18,10 +19,10 @@ public class GameCalculator {
 
         for (int i = 0; i < ALL_REGULATION_FRAMES; i++) {
             Frame currentFrame = allFrames.get(i);
-            points += PointsCalculator.frameTotalScore(currentFrame, aGame.getAllFrames());
-            Frame calculatedFrame = FramePointsCalculator.calculateTotalPoints(currentFrame, points);
+            points += FrameCalculator.frameTotalScore(currentFrame, aGame.getAllFrames());
+            Frame builtFrame = FrameBuilder.buildFrameTypeAndPoints(currentFrame, points);
 
-            totalFrames.add(calculatedFrame);
+            totalFrames.add(builtFrame);
         }
 
 

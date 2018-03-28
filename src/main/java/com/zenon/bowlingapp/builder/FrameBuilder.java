@@ -1,12 +1,12 @@
-package com.zenon.bowlingapp.scoring;
+package com.zenon.bowlingapp.builder;
 
 import com.zenon.bowlingapp.domain.frame.Frame;
 import com.zenon.bowlingapp.domain.frame.Spare;
 import com.zenon.bowlingapp.domain.frame.Strike;
 
-public class FramePointsCalculator {
+public class FrameBuilder {
 
-    static public Frame calculateTotalPoints(Frame frame, int points) {
+    static public Frame buildFrameTypeAndPoints(Frame frame, int points) {
 
         if (frame.isStrike()) {
             return new Strike(frame.getFirstRoll(), points);

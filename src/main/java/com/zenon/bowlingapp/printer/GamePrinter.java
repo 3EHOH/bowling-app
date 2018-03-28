@@ -1,4 +1,4 @@
-package com.zenon.bowlingapp;
+package com.zenon.bowlingapp.printer;
 
 import com.zenon.bowlingapp.domain.frame.Frame;
 import com.zenon.bowlingapp.domain.game.Game;

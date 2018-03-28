@@ -1,4 +1,4 @@
-package com.zenon.bowlingapp.domain;
+package com.zenon.bowlingapp.domain.roll;
 
 public class Roll {
 
